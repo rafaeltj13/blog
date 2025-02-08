@@ -31,8 +31,11 @@ export default function Header() {
         <Link href="/blog" className="text-foreground/80 hover:text-primary">
           Blog
         </Link>
-        <Link href="/blog" className="text-foreground/80 hover:text-primary">
-          Resume
+        <Link
+          href="/experience"
+          className="text-foreground/80 hover:text-primary"
+        >
+          Experience
         </Link>
         <Link href="/chat" className="text-foreground/80 hover:text-primary">
           Chat
@@ -40,7 +43,7 @@ export default function Header() {
       </nav>
       <div className="flex items-center justify-end w-64 pr-8 gap-4">
         <Link
-          href="https://github.com"
+          href="https://github.com/rafaeltj13"
           className="hover:text-foreground/80 hover:text-primary"
         >
           <Icon
@@ -51,7 +54,7 @@ export default function Header() {
           />
         </Link>
         <Link
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/rafael-de-ara%C3%BAjo-14b5b1117/"
           className="hover:text-foreground/80 hover:text-primary"
         >
           <Icon
@@ -62,7 +65,7 @@ export default function Header() {
           />
         </Link>
         <Link
-          href="https://instagram.com"
+          href="https://instagram.com/rafaeldearaujo_"
           className="hover:text-foreground/80 hover:text-primary"
         >
           <Icon
