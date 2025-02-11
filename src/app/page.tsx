@@ -1,14 +1,11 @@
 "use client";
 
-import { motion, useScroll } from "motion/react";
+import ExperienceItem from "@/components/experience/item";
+import { motion } from "motion/react";
 import { useRef } from "react";
 
 export default function Home() {
   const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start end", "end start"],
-  });
 
   return (
     <div className="py-28 px-8 max-w-screen-xl mx-auto flex justify-between">
@@ -36,14 +33,14 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <motion.p className="text-foreground/60 mb-4 text-xl hover:scale-110 transition-transform cursor-pointer hover:text-foreground">
+          <motion.p className="text-foreground/60 mb-4 text-xl hover:scale-105 transition-transform cursor-pointer hover:text-foreground">
             About
           </motion.p>
-          <motion.p className="text-foreground/60 mb-4 text-xl hover:scale-110 transition-transform cursor-pointer hover:text-foreground">
-            Professional experience
+          <motion.p className="text-foreground/60 mb-4 text-xl hover:scale-105 transition-transform cursor-pointer hover:text-foreground">
+            Projects
           </motion.p>
-          <motion.p className="text-foreground/60 mb-4 text-xl hover:scale-110 transition-transform cursor-pointer hover:text-foreground">
-            Relevant posts
+          <motion.p className="text-foreground/60 mb-4 text-xl hover:scale-105 transition-transform cursor-pointer hover:text-foreground">
+            Posts
           </motion.p>
         </motion.div>
       </motion.div>
@@ -153,6 +150,35 @@ export default function Home() {
             design and development, creating experiences that not only look
             great but are meticulously built for performance and usability.
           </motion.p>
+          <motion.div
+            className="py-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <ExperienceItem
+              timeRange="2023 - Present"
+              title="Software Engineer"
+              description="Led the development of a full-stack web application using React and Node.js"
+              technologies={["React", "TypeScript", "Node.js", "PostgreSQL"]}
+              company="Company Name"
+            />
+            <ExperienceItem
+              timeRange="2023 - Present"
+              title="Software Engineer"
+              description="Led the development of a full-stack web application using React and Node.js"
+              technologies={["React", "TypeScript", "Node.js", "PostgreSQL"]}
+              company="Company Name"
+            />
+            <ExperienceItem
+              timeRange="2023 - Present"
+              title="Software Engineer"
+              description="Led the development of a full-stack web application using React and Node.js"
+              technologies={["React", "TypeScript", "Node.js", "PostgreSQL"]}
+              company="Company Name"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </div>

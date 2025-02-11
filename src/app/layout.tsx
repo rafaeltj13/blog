@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Public_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/header";
+import { ThemeProvider } from "next-themes";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -25,12 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${publicSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
-        <Header />
-        {children}
+        <ThemeProvider attribute="data-theme">
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

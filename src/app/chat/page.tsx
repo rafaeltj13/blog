@@ -70,12 +70,6 @@ export default function ChatPage() {
         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       ></motion.p>
-      {/* <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="w-full h-[1px] bg-gradient-to-r from-[#23486a] to-[#36E4DA] rounded-lg"
-      /> */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
