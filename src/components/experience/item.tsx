@@ -32,7 +32,7 @@ export default function ExperienceItem({
         <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
           {technologies.map((tech, index) => (
             <li key={index} className="mr-1.5 mt-2">
-              <div className="flex items-center rounded-full bg-primary group-hover:bg-transparent group-hover:text-primary transition-all px-3 py-1 text-xs font-medium leading-5 text-muted-foreground">
+              <div className="flex items-center rounded-full bg-primary group-hover:bg-muted text-muted group-hover:text-primary transition-all px-3 py-1 text-xs font-medium leading-5 dark:text-muted-foreground">
                 {tech}
               </div>
             </li>
