@@ -3,7 +3,8 @@
 import BlogItem from "@/components/blog/item";
 import ExperienceItem from "@/components/experience/item";
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Experience } from "./experience/page";
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -14,6 +15,25 @@ export default function Home() {
   const isAboutInView = useInView(aboutRef);
   const isExperienceInView = useInView(experienceRef);
   const isBlogInView = useInView(blogRef);
+
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch("/api/experiences");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setExperiences(data.slice(0, 3));
+      } catch (error) {
+        console.error("Could not fetch experiences:", error);
+      }
+    };
+
+    fetchExperiences();
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -133,51 +153,32 @@ export default function Home() {
             great but are meticulously built for performance and usability.
           </motion.p>
         </div>
-        <div id="experience" ref={experienceRef}>
-          <motion.div
-            className="pt-12"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <ExperienceItem
-              timeRange="2023 - Present"
-              title="Software Engineer"
-              description="Led the development of a full-stack web application using React and Node.js"
-              technologies={["React", "TypeScript", "Node.js", "PostgreSQL"]}
-              company="Company Name"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <ExperienceItem
-              timeRange="2023 - Present"
-              title="Software Engineer"
-              description="Led the development of a full-stack web application using React and Node.js"
-              technologies={["React", "TypeScript", "Node.js", "PostgreSQL"]}
-              company="Company Name"
-            />
-          </motion.div>
-          <motion.div
-            className="pb-12"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <ExperienceItem
-              timeRange="2023 - Present"
-              title="Software Engineer"
-              description="Led the development of a full-stack web application using React and Node.js"
-              technologies={["React", "TypeScript", "Node.js", "PostgreSQL"]}
-              company="Company Name"
-            />
-          </motion.div>
+        <div className="py-20">
+          <div id="experience" ref={experienceRef}>
+            {experiences.map((experience, index) => (
+              <motion.div
+                key={index}
+                className="pb-12"
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+              >
+                <ExperienceItem
+                  timeRange={`${new Date(
+                    experience.dateStart
+                  ).getFullYear()} - ${new Date(
+                    experience.dateEnd
+                  ).getFullYear()}`}
+                  title={experience.title}
+                  description={experience.description}
+                  technologies={experience.technologies}
+                  company={experience.companyName}
+                  partner={experience.partner}
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
         <div id="blog" ref={blogRef}>
           <motion.div

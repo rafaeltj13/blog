@@ -4,13 +4,41 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "next/image";
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ExperienceItem from "@/components/experience/item";
+
+export interface Experience {
+  title: string;
+  companyName: string;
+  technologies: string[];
+  dateStart: string;
+  dateEnd: string;
+  description: string;
+  partner?: string;
+}
 
 export default function ResumePage() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    const fetchExperiences = async () => {
+      try {
+        const response = await fetch("/api/experiences");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setExperiences(data);
+      } catch (error) {
+        console.error("Could not fetch experiences:", error);
+      }
+    };
+
+    fetchExperiences();
+  }, []);
 
   const handleDownload = () => {
     window.open("/CV-RafaelMaciel.pdf", "_blank");
@@ -89,42 +117,27 @@ export default function ResumePage() {
                   delayChildren: 0.4,
                 }}
               >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <ExperienceItem
-                    timeRange="2023 - Present"
-                    title="Software Engineer"
-                    description="Led the development of a full-stack web application using React and Node.jsLed the development of a full-stack web application using React and Node.jsLed the development of a full-stack web application using React and Node.jsLed the development of a full-stack web application using React and Node.jsLed the development of a full-stack web application using React and Node.jsLed the development of a full-stack web application using React and Node.js"
-                    technologies={[
-                      "React",
-                      "TypeScript",
-                      "Node.js",
-                      "PostgreSQL",
-                    ]}
-                    company="Company Name"
-                  />
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <ExperienceItem
-                    timeRange="2023 - Present"
-                    title="Software Engineer"
-                    description="Led the development of a full-stack web application using React and Node.js"
-                    technologies={[
-                      "React",
-                      "TypeScript",
-                      "Node.js",
-                      "PostgreSQL",
-                    ]}
-                    company="Company Name"
-                  />
-                </motion.div>
+                {experiences.map((experience, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <ExperienceItem
+                      timeRange={`${new Date(
+                        experience.dateStart
+                      ).getFullYear()} - ${new Date(
+                        experience.dateEnd
+                      ).getFullYear()}`}
+                      title={experience.title}
+                      description={experience.description}
+                      technologies={experience.technologies}
+                      company={experience.companyName}
+                      partner={experience.partner}
+                    />
+                  </motion.div>
+                ))}
               </motion.div>
             </motion.div>
           </TabsContent>

@@ -1,9 +1,10 @@
-interface ExperienceItemProps {
+export interface ExperienceItemProps {
   timeRange: string;
   title: string;
   description: string;
   technologies: string[];
   company: string;
+  partner?: string;
 }
 
 export default function ExperienceItem({
@@ -12,6 +13,7 @@ export default function ExperienceItem({
   description,
   technologies,
   company,
+  partner,
 }: ExperienceItemProps) {
   return (
     <div className="group relative grid mb-8 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 w-full">
@@ -24,6 +26,7 @@ export default function ExperienceItem({
           <div className="inline-flex items-baseline font-medium leading-tight text-foreground hover:text-primary group/link text-base">
             <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
             {title} - {company}
+            {partner ? " / " + partner : ""}
           </div>
         </h3>
         <p className="mt-2 text-sm leading-normal text-muted-foreground">
