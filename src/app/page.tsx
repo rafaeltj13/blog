@@ -5,6 +5,7 @@ import ExperienceItem from "@/components/experience/item";
 import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Experience } from "./experience/page";
+import { Icon } from "@iconify/react";
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -40,8 +41,7 @@ export default function Home() {
     if (element) {
       const headerOffset = 64;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -53,19 +53,53 @@ export default function Home() {
   return (
     <div className="py-28 px-8 max-w-screen-xl mx-auto flex justify-between">
       <motion.div
-        className="w-[50%] fixed top-28 h-[80vh] flex flex-col justify-between"
+        className="w-[40%] fixed top-28 h-[80vh] flex flex-col justify-between"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div>
+        <div className="w-[80%]">
           <h1 className="text-4xl font-bold mb-2">Rafael de Araújo Maciel</h1>
           <p className="text-foreground/80 mb-4 text-xl">
             Senior Software Engineer
           </p>
           <p>
-            I build accessible, pixel-perfect digital experiences for the web.
+            I&apos;m a full-stack developer with a passion for creating seamless
+            user experiences. I build accessible, pixel-perfect digital
+            experiences for the web.
           </p>
+          <div className="flex gap-2 mt-4">
+            <Icon
+              className="text-foreground"
+              icon="vscode-icons:file-type-reactts"
+              width="32"
+              height="32"
+            />
+            <Icon
+              className="text-foreground"
+              icon="vscode-icons:file-type-vue"
+              width="32"
+              height="32"
+            />
+            <Icon
+              className="text-foreground"
+              icon="vscode-icons:file-type-node"
+              width="32"
+              height="32"
+            />
+            <Icon
+              className="text-foreground"
+              icon="vscode-icons:file-type-next"
+              width="32"
+              height="32"
+            />
+            <Icon
+              className="text-foreground"
+              icon="vscode-icons:file-type-nuxt"
+              width="32"
+              height="32"
+            />
+          </div>
         </div>
         <motion.div
           initial={{ opacity: 0 }}
@@ -101,56 +135,52 @@ export default function Home() {
       <div className="ml-auto w-[50%]" ref={scrollRef}>
         <div id="about" ref={aboutRef}>
           <motion.p
-            className="text-foreground mb-4 text-xl"
+            className="text-foreground mb-4 text-lg"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            I&apos;m a developer passionate about crafting accessible,
-            pixel-perfect user interfaces that blend thoughtful design with
-            robust engineering. My favorite work lies at the intersection of
-            design and development, creating experiences that not only look
-            great but are meticulously built for performance and usability.
+            Welcome to my corner of the web! I'm a developer from Campina
+            Grande, a city in Paraíba, Brazil, where my journey in web
+            development began. At 27, I've already experienced quite an
+            evolution in web technologies.
           </motion.p>
           <motion.p
-            className="text-foreground mb-4 text-xl"
+            className="text-foreground mb-4 text-lg"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            I&apos;m a developer passionate about crafting accessible,
-            pixel-perfect user interfaces that blend thoughtful design with
-            robust engineering. My favorite work lies at the intersection of
-            design and development, creating experiences that not only look
-            great but are meticulously built for performance and usability.
+            My path started with classic frameworks like AngularJS and ASP.NET
+            during my university years, but it was discovering mordern
+            frameworks like React and Vue that truly ignited my passion for web
+            development. Today, I focus on creating meaningful digital
+            experiences that combine clean code with thoughtful design.
           </motion.p>
           <motion.p
-            className="text-foreground mb-4 text-xl"
+            className="text-foreground mb-4 text-lg"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            I&apos;m a developer passionate about crafting accessible,
-            pixel-perfect user interfaces that blend thoughtful design with
-            robust engineering. My favorite work lies at the intersection of
-            design and development, creating experiences that not only look
-            great but are meticulously built for performance and usability.
+            I have 7+ years of experience specializing in full-stack web
+            development. Advanced proficiency in modern TypeScript frameworks
+            including React, Vue.js, Next.js, and Node.js. Successfully
+            collaborated with global teams to build scalable solutions,
+            demonstrating effective cross-cultural communication.
           </motion.p>
           <motion.p
-            className="text-foreground mb-4 text-xl"
+            className="text-foreground mb-4 text-lg"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            I&apos;m a developer passionate about crafting accessible,
-            pixel-perfect user interfaces that blend thoughtful design with
-            robust engineering. My favorite work lies at the intersection of
-            design and development, creating experiences that not only look
-            great but are meticulously built for performance and usability.
+            In my spare time, I’m usually playing DotA 2, NBA 2k25, working out,
+            hanging out with my girlfriend and two cats, or watching series.
           </motion.p>
         </div>
         <div className="py-20">
@@ -166,9 +196,9 @@ export default function Home() {
               >
                 <ExperienceItem
                   timeRange={`${new Date(
-                    experience.dateStart
+                    experience.dateStart,
                   ).getFullYear()} - ${new Date(
-                    experience.dateEnd
+                    experience.dateEnd,
                   ).getFullYear()}`}
                   title={experience.title}
                   description={experience.description}

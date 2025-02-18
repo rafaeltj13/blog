@@ -46,7 +46,7 @@ export default function Header() {
       <div className="flex items-center justify-end w-64 pr-8 gap-4">
         <Link
           href="https://github.com/rafaeltj13"
-          className="hover:text-foreground/80 hover:text-primary"
+          className="hover:text-primary"
         >
           <Icon
             className="text-foreground hover:text-primary"
@@ -57,7 +57,7 @@ export default function Header() {
         </Link>
         <Link
           href="https://www.linkedin.com/in/rafael-de-ara%C3%BAjo-14b5b1117/"
-          className="hover:text-foreground/80 hover:text-primary"
+          className="hover:text-primary"
         >
           <Icon
             className="text-foreground hover:text-primary"
@@ -68,7 +68,7 @@ export default function Header() {
         </Link>
         <Link
           href="https://instagram.com/rafaeldearaujo_"
-          className="hover:text-foreground/80 hover:text-primary"
+          className="hover:text-primary"
         >
           <Icon
             className="text-foreground hover:text-primary "
