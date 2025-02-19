@@ -31,8 +31,25 @@ export default function RootLayout({
         className={`${publicSans.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <ThemeProvider attribute="data-theme">
-          <Header />
-          {children}
+          {/* Mobile/Tablet Notice */}
+          <div className="lg:hidden fixed inset-0 z-50 flex items-center justify-center bg-background p-8 text-center">
+            <div className="max-w-md space-y-4">
+              <h2 className="text-2xl font-bold text-foreground">
+                Mobile Version Under Development
+              </h2>
+              <p className="text-foreground/80">
+                We apologize, but we are currently working on the mobile version
+                of our website. Please visit us on a desktop device for the best
+                experience.
+              </p>
+            </div>
+          </div>
+
+          {/* Main Content - Hidden on Mobile/Tablet */}
+          <div className="hidden lg:block">
+            <Header />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

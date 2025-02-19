@@ -1,5 +1,7 @@
 "use client";
 
+import dayjs from "dayjs";
+
 import {
   motion,
   MotionValue,
@@ -10,23 +12,29 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 import Image from "next/image";
-import eu from "../../../public/cfc31a16-48e0-4f31-8cab-87e9ba009b3d.jpg";
-import eu2 from "../../../public/basket-marketplace.png";
-import eu3 from "../../../public/creditOrDebit.png";
 import Link from "next/link";
+
+interface Post {
+  id: string;
+  image: string;
+  title: string;
+  content: string;
+  date: string;
+  htmlContent: string;
+}
 
 function useParallax(value: MotionValue<number>, distance: number) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Imagee({ id }: { id: number }) {
+function PostItem({ post }: { post: Post }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useParallax(scrollYProgress, 300);
 
   return (
-    <Link href={`/blog/${id}`}>
+    <Link href={`/blog/${post.id}`}>
       <section className="h-screen snap-start flex items-center relative max-w-screen-lg mx-auto">
         <div
           ref={ref}
@@ -38,11 +46,13 @@ function Imagee({ id }: { id: number }) {
           }}
         >
           <Image
-            src={id == 1 ? eu : id == 2 ? eu2 : eu3}
+            src={`/${post.image}.jpg`}
             alt="A London skyscraper"
             className="w-full h-full object-cover"
             priority
             quality={100}
+            width={100}
+            height={300}
           />
         </div>
         <motion.div
@@ -53,16 +63,14 @@ function Imagee({ id }: { id: number }) {
           className="w-[60%] tracking-[-3px] absolute inline-block left-[calc(30%+120px)]"
         >
           <motion.h2 className="text-foreground m-0 font-mono text-5xl font-bold">
-            <motion.span className="text-primary">#0{id}</motion.span> Hello!
-            This is a blog post
+            <motion.span className="text-primary">#0{post.id}</motion.span>{" "}
+            {post.title}
           </motion.h2>
           <motion.p className="text-foreground m-0 font-mono text-2xl mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
-            nec,
+            {post.content}
           </motion.p>
           <motion.p className="text-foreground m-0 font-mono text-2xl mt-4">
-            January 1, 1970
+            {dayjs(post.date).format("MMMM D, YYYY")}
           </motion.p>
         </motion.div>
       </section>
@@ -70,7 +78,7 @@ function Imagee({ id }: { id: number }) {
   );
 }
 
-export default function Parallax() {
+export default function Parallax({ posts }: { posts: Post[] }) {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -80,8 +88,8 @@ export default function Parallax() {
 
   return (
     <div id="example" className="snap-y snap-mandatory">
-      {[1, 2, 3].map((image) => (
-        <Imagee key={image} id={image} />
+      {posts.map((post) => (
+        <PostItem key={post.id} post={post} />
       ))}
       <motion.div
         className="fixed left-0 right-0 h-[5px] bg-primary bottom-[64px] origin-[0%] rounded-2xl"

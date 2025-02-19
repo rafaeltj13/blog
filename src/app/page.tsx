@@ -141,9 +141,9 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            Welcome to my corner of the web! I'm a developer from Campina
+            Welcome to my corner of the web! I&apos;m a developer from Campina
             Grande, a city in Paraíba, Brazil, where my journey in web
-            development began. At 27, I've already experienced quite an
+            development began. At 27, I&apos;ve already experienced quite an
             evolution in web technologies.
           </motion.p>
           <motion.p
@@ -179,8 +179,9 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            In my spare time, I’m usually playing DotA 2, NBA 2k25, working out,
-            hanging out with my girlfriend and two cats, or watching series.
+            In my spare time, I&apos;m usually playing DotA 2, NBA 2k25, working
+            out, hanging out with my girlfriend and two cats, or watching
+            series.
           </motion.p>
         </div>
         <div className="py-20">
