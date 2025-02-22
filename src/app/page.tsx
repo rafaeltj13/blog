@@ -6,6 +6,7 @@ import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Experience } from "./experience/page";
 import { Icon } from "@iconify/react";
+import { Post } from "@/app/api/posts/posts";
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -18,6 +19,7 @@ export default function Home() {
   const isBlogInView = useInView(blogRef);
 
   const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const fetchExperiences = async () => {
@@ -34,6 +36,23 @@ export default function Home() {
     };
 
     fetchExperiences();
+  }, []);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("/api/posts");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setPosts(data.slice(0, 3));
+      } catch (error) {
+        console.error("Could not fetch posts:", error);
+      }
+    };
+
+    fetchPosts();
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -58,12 +77,12 @@ export default function Home() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="w-[80%]">
+        <div className="lg:w-[80%] sm:w-[75%] max-w-[520px]">
           <h1 className="text-4xl font-bold mb-2">Rafael de Araújo Maciel</h1>
           <p className="text-foreground/80 mb-4 text-xl">
             Senior Software Engineer
           </p>
-          <p>
+          <p className="w-full">
             I&apos;m a full-stack developer with a passion for creating seamless
             user experiences. I build accessible, pixel-perfect digital
             experiences for the web.
@@ -212,30 +231,22 @@ export default function Home() {
           </div>
         </div>
         <div id="blog" ref={blogRef}>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <BlogItem
-              title="Understanding React Server Components"
-              description="A deep dive into React Server Components and how they can improve your application's performance."
-              link="/blog/react-server-components"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <BlogItem
-              title="Understanding React Server Components"
-              description="A deep dive into React Server Components and how they can improve your application's performance."
-              link="/blog/react-server-components"
-            />
-          </motion.div>
+          {posts.map((post, index) => (
+            <motion.div
+              key={post.id + index}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+            >
+              <BlogItem
+                title={post.title}
+                description={post.content}
+                link={`/blog/${post.id}`}
+                image={post.image}
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

@@ -5,9 +5,15 @@ interface BlogItemProps {
   title: string;
   description: string;
   link: string;
+  image: string;
 }
 
-export default function BlogItem({ title, description, link }: BlogItemProps) {
+export default function BlogItem({
+  title,
+  description,
+  link,
+  image,
+}: BlogItemProps) {
   return (
     <a
       href={link}
@@ -16,11 +22,13 @@ export default function BlogItem({ title, description, link }: BlogItemProps) {
       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-muted/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
       <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
         <Image
-          src={eu}
+          src={`/${image}.jpg`}
           alt="A London skyscraper"
-          className="w-full h-32 object-cover"
+          className="object-cover"
           priority
           quality={100}
+          width={100}
+          height={100}
         />
       </header>
       <div className="z-10 sm:col-span-6">
