@@ -9,7 +9,7 @@ async function getPosts() {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     if (!response.ok) {
@@ -28,7 +28,7 @@ export default async function BlogPage() {
 
   return (
     <div>
-      <Parallax posts={posts} />
+      <Parallax posts={posts.reverse()} />
     </div>
   );
 }

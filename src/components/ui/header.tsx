@@ -31,7 +31,7 @@ export default function Header() {
       </div>
       <nav className="flex items-center space-x-6 ">
         <Link href="/blog" className="text-foreground/80 hover:text-primary">
-          Blog
+          Posts
         </Link>
         <Link
           href="/experience"
