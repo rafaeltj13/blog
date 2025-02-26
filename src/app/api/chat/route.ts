@@ -44,16 +44,20 @@ export async function POST(request: Request) {
       model: "gpt-3.5-turbo",
     });
 
-    console.log({ completion });
-
     return NextResponse.json({
       message: {
         role: "assistant",
         content: completion.choices[0]?.message?.content || "",
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error ? error.message : "An unknown error occurred",
+      },
+      { status: 500 }
+    );
   }
 }

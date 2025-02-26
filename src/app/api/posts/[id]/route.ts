@@ -1,12 +1,10 @@
 import { NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
 import posts from "../posts";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } },
-) {
+export async function GET(request: NextRequest) {
   try {
-    const id = params.id;
+    const id = request.nextUrl.pathname.split("/").pop();
     const post = posts.find((post) => post.id === id);
 
     if (!post) {

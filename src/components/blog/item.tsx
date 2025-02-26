@@ -1,5 +1,4 @@
 import Image from "next/image";
-import eu from "../../../public/cfc31a16-48e0-4f31-8cab-87e9ba009b3d.jpg";
 
 interface BlogItemProps {
   title: string;
