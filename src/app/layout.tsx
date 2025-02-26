@@ -3,6 +3,7 @@ import { Public_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/header";
 import { ThemeProvider } from "next-themes";
+import { BackgroundWrapper } from "@/components/ui/background-wrapper";
 
 const publicSans = Public_Sans({
   subsets: ["latin"],
@@ -46,7 +47,8 @@ export default function RootLayout({
           </div>
 
           {/* Main Content - Hidden on Mobile/Tablet */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block min-h-screen">
+            <BackgroundWrapper />
             <Header />
             {children}
           </div>

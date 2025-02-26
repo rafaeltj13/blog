@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <header
-      className={`flex items-center justify-between py-4 fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-sm max-w-screen-xl mx-auto  ${
+      className={`flex items-center justify-between py-4 fixed top-0 left-0 right-0 z-50 w-full backdrop-blur-sm max-w-screen-xl mx-auto transition-all duration-300 ${
         isScrolled ? "bg-background/50 border-primary" : ""
       }`}
     >
