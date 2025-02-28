@@ -15,7 +15,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${slug}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${slug}`,
   );
 
   if (!response.ok) {

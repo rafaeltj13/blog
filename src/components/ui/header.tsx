@@ -26,7 +26,7 @@ export default function Header() {
     >
       <div className="flex items-center pl-8 w-64">
         <Link href="/" className="text-2xl font-bold">
-          <span className="text-primary">R4L.</span>site
+          <span className="text-primary">R4L.</span>blog
         </Link>
       </div>
       <nav className="flex items-center space-x-6 ">

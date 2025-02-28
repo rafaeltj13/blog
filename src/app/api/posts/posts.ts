@@ -15,90 +15,96 @@ const posts: Post[] = [
     content:
       "This is my very first post! I'm excited to share my thoughts and experiences with you. I never really done anything like this before, but I'm sure I'll get the hang of it.",
     date: "2025-02-18",
-    htmlContent: `<article class="prose lg:prose-xl dark:prose-invert">
-        <div class="my-4 p-4 bg-card rounded-lg shadow-lg">
-          <p class="text-lg leading-relaxed">Building a personal blog with Next.js is an exciting project that can help you learn modern web development concepts while creating something useful.</p>
+    htmlContent: `<article class="prose lg:prose-xl dark:prose-invert relative z-10 bg-background/80 backdrop-blur-sm rounded-xl p-8 shadow-xl mx-auto mb-12">
+      <p class="text-lg leading-relaxed">
+        For a long time I tried to build the perfect personal project, initially I was in the trend of creating a side project that can generate some passive income, after that I tried to build
+        a game that could interest me a little bit more than just build something that makes money. After that I came back and tried to create a project that connects to the game that I already play and try to make some money out of that.
+      </p>
+
+      <p class="text-lg leading-relaxed mt-6">
+        After a couple of years struggling with projects that are too big for me to handle alone I was forced to take a step back after a layoff and I want to prepare a little bit more to the market. I stopped working
+        in the projects and I needed something to make a good first impression, I never tried to make something like a blog because it seems like it is too simple and not worth the effort, everyone else does it.
+      </p>
+
+      <p class="text-lg leading-relaxed mt-6">
+        After some thinking I decided to create a blog and immediately noticed why everyone else does it. It is the perfect way to share my thoughts and display my work in a small and direct approach, I can easily
+        create a reasonable scope and add interesting things to it. But probably the most important thing it is that I can actually finish this project. For the last couple of years I had a ton of good ideas but didn't actually finish any of them,
+        I started to question my ability to finish projects and I felt like I was not good enough.
+      </p>
+
+      <div class="my-12 p-8 border-l-4 border-primary bg-card/70 backdrop-blur-sm rounded-xl shadow-lg">
+        <h3 class="text-2xl font-semibold mb-3">Pro Tip</h3>
+        <p class="text-lg italic">Even for small projects, it's important to always take a step back and think about what you want to achieve. It's easy to get lost in the details and lose sight of the bigger picture.</p>
+      </div>
+
+      <h2 class="text-3xl font-bold mt-12 mb-6">Personal projects</h2>
+      <p class="text-lg">I still believe that working in a personal projects is almost a must if you want to improve your skills and keep yourself relevant. For me, I always loved to work in the Vue ecosystem, but unfortunately my professional life was not always
+        as flexible as I would have liked, 99% of the projects just default to React/Next.js and even though it is good, I don't believe is the best choice every time.</p>
+
+      <p class="text-lg mt-6">Working in personal projects is also a great way to experiment with new technologies and frameworks, and to learn from your mistakes. SSR was getting really popular when I started my first personal project so I used that oportunity to learn
+        tecnologies like Nuxt.js. The kept me close to the community and helped me to grow as a developer but also improve my skills as a developer. Here's the main things that I learned working in personal projects:</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+        <div class="bg-card/70 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all hover:scale-105">
+          <h4 class="text-xl font-bold mb-4">Technologies</h4>
+          <ul class="list-disc list-inside space-y-3">
+            <li>Tailwind CSS</li>
+            <li>Nuxt.js</li>
+            <li>Supabase</li>
+            <li>Flutter</li>
+          </ul>
         </div>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Getting Started</h2>
-        <p>First, let's create a new Next.js project using the following command:</p>
-        <pre class="bg-card p-4 rounded-lg overflow-x-auto"><code class="text-sm font-mono">npx create-next-app@latest my-blog</code></pre>
-
-        <div class="my-8 p-6 border-l-4 border-primary bg-card/50 rounded-r-lg">
-          <h3 class="text-xl font-semibold mb-2">Pro Tip</h3>
-          <p>When setting up your Next.js project, consider using TypeScript from the start. It will help catch errors early and improve code maintainability.</p>
+        <div class="bg-card/70 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-all hover:scale-105">
+          <h4 class="text-xl font-bold mb-4">Concepts</h4>
+          <ul class="list-disc list-inside space-y-3">
+            <li>SSR</li>
+            <li>SEO</li>
+            <li>Performance</li>
+            <li>Gathering requirements</li>
+          </ul>
         </div>
+      </div>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4">Project Structure</h2>
-        <p>Next.js provides a great file-based routing system. Here's how we'll organize our blog:</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-          <div class="bg-card p-4 rounded-lg">
-            <h4 class="font-bold mb-2">Frontend Structure</h4>
-            <ul class="list-disc list-inside space-y-2">
-              <li>pages/: Contains all our routes</li>
-              <li>components/: Reusable UI components</li>
-              <li>styles/: CSS and styling files</li>
-              <li>public/: Static assets like images</li>
-            </ul>
-          </div>
-          <div class="bg-card p-4 rounded-lg">
-            <h4 class="font-bold mb-2">Additional Folders</h4>
-            <ul class="list-disc list-inside space-y-2">
-              <li>lib/: Utility functions</li>
-              <li>hooks/: Custom React hooks</li>
-              <li>types/: TypeScript definitions</li>
-              <li>content/: Blog posts and MDX files</li>
-            </ul>
-          </div>
+      <h2 class="text-3xl font-bold mt-12 mb-6">Pros and cons</h2>
+      <p class="text-lg mb-6">Even though is a good opportunity to push yourself forward, it not always easy to do so.</p>
+
+      <div class="flex flex-col md:flex-row gap-6 my-8">
+        <div class="flex-1 p-6 bg-card/70 backdrop-blur-sm rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-4">Pros</h4>
+          <ul class="list-none space-y-3">
+            <li class="flex items-center gap-3">
+              <span class="text-green-500 text-xl">✓</span> Improve skills
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500 text-xl">✓</span> Better understanding of the requirements
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-green-500 text-xl">✓</span> Choice on what you want to work
+            </li>
+          </ul>
         </div>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Styling Your Blog</h2>
-        <div class="space-y-4">
-          <p>We'll use Tailwind CSS for styling our blog. It provides utility classes that make it easy to create responsive designs.</p>
-
-          <div class="flex flex-col md:flex-row gap-4 my-6">
-            <div class="flex-1 p-4 bg-card rounded-lg">
-              <h4 class="font-bold mb-2">Pros</h4>
-              <ul class="list-none space-y-2">
-                <li class="flex items-center gap-2">
-                  <span class="text-green-500">✓</span> Utility-first approach
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-green-500">✓</span> Highly customizable
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-green-500">✓</span> Great documentation
-                </li>
-              </ul>
-            </div>
-            <div class="flex-1 p-4 bg-card rounded-lg">
-              <h4 class="font-bold mb-2">Cons</h4>
-              <ul class="list-none space-y-2">
-                <li class="flex items-center gap-2">
-                  <span class="text-red-500">×</span> Learning curve
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-red-500">×</span> Long class names
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="flex-1 p-6 bg-card/70 backdrop-blur-sm rounded-xl shadow-lg">
+          <h4 class="text-xl font-bold mb-4">Cons</h4>
+          <ul class="list-none space-y-3">
+            <li class="flex items-center gap-3">
+              <span class="text-red-500 text-xl">×</span> It can get very big and complex
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-red-500 text-xl">×</span> You can feel stuck and lose interest very easily
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="text-red-500 text-xl">×</span> After some time, you may feel overwhelmed by not finishing the project
+            </li>
+          </ul>
         </div>
+      </div>
 
-        <h2 class="text-2xl font-bold mt-8 mb-4">Conclusion</h2>
-        <div class="bg-card/50 p-6 rounded-lg shadow-inner">
-          <p class="text-lg">With these basics in place, you now have a foundation for building your personal blog. Keep exploring and adding features as you go!</p>
-          <div class="mt-4 p-4 bg-primary/10 rounded-lg">
-            <p class="font-semibold">Next Steps:</p>
-            <ul class="list-disc list-inside mt-2 space-y-1">
-              <li>Add authentication</li>
-              <li>Implement comments system</li>
-              <li>Set up analytics</li>
-              <li>Add RSS feed</li>
-            </ul>
-          </div>
-        </div>
-      </article>`,
+      <h2 class="text-3xl font-bold mt-12 mb-6">Conclusion</h2>
+      <p class="text-lg">
+        With all of that, I still feel like it is very important to work on yourself in your off time. But you should always remember that your mental health is more important than your work. It's important to take care of yourself and prioritize your well-being. Small steps are key to success and you don't
+        need to be productive every day, sometimes not even every week. It's important to take breaks and give yourself time to recharge.
+      </p>
+    </article>`,
   },
   {
     id: "2",
@@ -107,7 +113,7 @@ const posts: Post[] = [
     image: "cfc31a16-48e0-4f31-8cab-87e9ba009b3d",
     content:
       "I've testes all the popular code editors: Cursor, Windsurf, Trae and even Zed AI. Here are some thoughts on all of this AI stuff.",
-    htmlContent: `<article class="prose lg:prose-xl dark:prose-invert  mx-auto">
+    htmlContent: `<article class="prose lg:prose-xl dark:prose-invert relative z-10 bg-background/50 backdrop-blur-sm rounded-xl p-8 shadow-xl mx-auto mb-12">
         <p class="text-lg leading-relaxed mb-6">
             <a class="text-sky-500 hover:text-sky-600 transition-colors underline" href="https://cursor.sh/">Cursor</a> was the first code editor that actually implemented AI features built in. It's a great tool for developers who want to try out interact with AI.
             I was an early adopter because I do follow a lot of YouTube channels, specially related to frontend development. Before all this AI stuff, I was always trying to find a new tool that optimizes
@@ -154,7 +160,7 @@ const posts: Post[] = [
             Cursor is definitely the best tool, but Trae is a free tool so it is a little bit hard for me to recommend paying for it. There's also Zen which is free and a really different alternative than just adding AI features and charging for a subscription in an open source project.
         </p>
 
-        <p class="text-lg leading-relaxed mb-6">
+        <p class="text-lg leading-relaxed">
             But recently I became a little bit skeptical about introducing that many AI features to our workflows. It's a lot of work to maintain and update those features, and it's not always clear what the benefits are. It can definitely help on doing some repetitive work but using those tools can be a bit overwhelming. It can take over really quick and you can easily start to depend on it, that's why I decided to use Zen for this website, I felt like I need a break and let my mind think for a little bit. But in the end the most important thing is to use what you feel comfortable with and what works for you.
         </p>
     </article>
