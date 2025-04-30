@@ -54,7 +54,7 @@ export default function ChatForm({
             <FormItem>
               <FormControl>
                 <Textarea
-                  placeholder="Ask me anything"
+                  placeholder="I heard that you are a great developer, please tell me more about yourself..."
                   {...field}
                   rows={3}
                   className="resize-none gradient-border focus-visible:ring-0 focus-visible:ring-offset-0 border-2"

@@ -22,7 +22,7 @@ export default function BlogItem({
       <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:col-span-2">
         <Image
           src={`/${image}.jpg`}
-          alt="A London skyscraper"
+          alt="Post image"
           className="object-cover"
           priority
           quality={100}

@@ -110,7 +110,7 @@ const posts: Post[] = [
     id: "2",
     title: "AI code editor battle",
     date: "2025-02-24",
-    image: "cfc31a16-48e0-4f31-8cab-87e9ba009b3d",
+    image: "9b2b1b27aaf74aa3961c47062e0ab85c",
     content:
       "I've testes all the popular code editors: Cursor, Windsurf, Trae and even Zed AI. Here are some thoughts on all of this AI stuff.",
     htmlContent: `<article class="prose lg:prose-xl dark:prose-invert relative z-10 bg-background/50 backdrop-blur-sm rounded-xl p-8 shadow-xl mx-auto mb-12">

@@ -38,7 +38,7 @@ function PostItem({ post }: { post: Post }) {
       <section className="h-screen snap-start flex items-center relative max-w-screen-lg mx-auto">
         <div
           ref={ref}
-          className="w-[40%] h-[500px] m-5 bg-[#f5f5f5] overflow-hidden shadow-lg md:w-[300px] md:h-[400px] sm:w-[150px] sm:h-[200px]"
+          className="relative m-5 bg-[#f5f5f5] overflow-hidden shadow-lg min-w-[300px] min-h-[400px]"
           style={{
             transform: isInView ? "none" : "translateX(-200px)",
             opacity: isInView ? 1 : 0,
@@ -47,12 +47,10 @@ function PostItem({ post }: { post: Post }) {
         >
           <Image
             src={`/${post.image}.jpg`}
-            alt="A London skyscraper"
-            className="w-full h-full object-cover"
-            priority
+            alt="Post image"
+            className="object-cover"
+            fill
             quality={100}
-            width={100}
-            height={300}
           />
         </div>
         <motion.div
